@@ -41,4 +41,28 @@ describe("O cadastro de alunos", () => {
     expect(aluno.nome).toBe("Mariana");
   })
 
+  it("atualiza alunos corretamente", () => {
+    var aluno: Aluno = new(Aluno);
+    aluno.nome = "Luisa";
+    aluno.cpf = "123";
+    cadastro.cadastrar(aluno);
+
+    expect(cadastro.getAlunos().length).toBe(1);
+    aluno = cadastro.getAlunos()[0];
+    expect(aluno.nome).toBe("Luisa");
+    expect(aluno.cpf).toBe("123");
+    expect(aluno.email).toBe("");
+
+    var atAluno: Aluno = new(Aluno);
+    atAluno.nome = "Gabriela";
+    atAluno.cpf = "123";
+    cadastro.atualizar(atAluno);
+
+    expect(cadastro.getAlunos().length).toBe(1);
+    aluno = cadastro.getAlunos()[0];
+    expect(aluno.nome).toBe("Gabriela");
+    expect(aluno.cpf).toBe("123");
+    expect(aluno.email).toBe("");
+  })
+
 })
